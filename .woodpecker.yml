@@ -31,7 +31,7 @@ steps:
       - git fetch origin
       - git reset --hard origin/main
 
-      - chown -R ngurley:ngurley /site
+      - chown -R 1001:1001 /site
     when:
       event: push
       branch: main
