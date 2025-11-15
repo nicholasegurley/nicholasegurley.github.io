@@ -1,5 +1,5 @@
 clone:
-  disable: true   # we will manually fetch
+  disable: null   # we will manually fetch
 
 steps:
   update_site:
