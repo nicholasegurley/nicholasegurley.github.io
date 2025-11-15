@@ -41,13 +41,15 @@ steps:
     image: alpine
     privileged: true
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/systemctl:/usr/bin/systemctl
+      - /bin/systemctl:/bin/systemctl
+      - /usr/lib/systemd:/usr/lib/systemd
+      - /lib/systemd:/lib/systemd
+      - /run/systemd:/run/systemd
+      - /run/dbus:/run/dbus
     commands:
-      # Install needed tools
-      - apk add --no-cache docker-cli util-linux
-
-      # Restart systemd service on HOST using nsenter through docker
-      - docker run --rm --pid=host -v /usr/bin/systemctl:/usr/bin/systemctl -v /lib/systemd:/lib/systemd -v /run/systemd:/run/systemd -v /run/dbus:/run/dbus alpine sh -c "systemctl restart jekyll-dev"
+      - apk add --no-cache bash docker-cli util-linux
+      - bash -lc "/usr/bin/systemctl restart jekyll-dev"
     when:
       event: push
       branch: main
