@@ -47,13 +47,7 @@ steps:
       - apk add --no-cache docker-cli util-linux
 
       # Restart systemd service on HOST using nsenter through docker
-      - docker run --rm \
-          --pid=host \
-          -v /usr/bin/systemctl:/usr/bin/systemctl \
-          -v /lib/systemd:/lib/systemd \
-          -v /run/systemd:/run/systemd \
-          -v /run/dbus:/run/dbus \
-          alpine sh -c "systemctl restart jekyll-dev"
+      - docker run --rm --pid=host -v /usr/bin/systemctl:/usr/bin/systemctl -v /lib/systemd:/lib/systemd -v /run/systemd:/run/systemd -v /run/dbus:/run/dbus alpine sh -c "systemctl restart jekyll-dev"
     when:
       event: push
       branch: main
