@@ -1,16 +1,15 @@
-workflow:
-  when:
-    event: [ push ]
-    branch: [ main ]
-
 steps:
   update_site:
     image: alpine/git
     commands:
+      - git config --global http.sslVerify false
       - cd /home/ngurley/nicholasegurley.github.io
       - git fetch origin
       - git reset --hard origin/main
       - chown -R ngurley:ngurley /home/ngurley/nicholasegurley.github.io
+    when:
+      event: push
+      branch: main
 
   restart_jekyll:
     image: alpine
@@ -18,4 +17,7 @@ steps:
     commands:
       - apk add --no-cache bash
       - bash -lc "systemctl restart jekyll-dev"
+    when:
+      event: push
+      branch: main
 
