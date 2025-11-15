@@ -2,21 +2,6 @@ clone:
   disable: true   # we will manually fetch
 
 steps:
-  debug_ssh:
-    image: alpine
-    environment:
-      HOME: /root
-    volumes:
-      - /home/ngurley/.ssh:/root/.ssh
-    commands:
-      - ls -la /root
-      - ls -la /root/.ssh
-      - cat /root/.ssh/id_rsa.pub || true
-      - echo "home:"; echo $HOME
-    when:
-      event: push
-      branch: main
-
   update_site:
     image: alpine/git
     volumes:
