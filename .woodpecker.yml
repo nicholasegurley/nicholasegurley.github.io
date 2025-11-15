@@ -1,35 +1,64 @@
 clone:
-  git:
-    image: woodpeckerci/plugin-git
-    settings:
-      depth: 1
-      skip_verify: true
+  disable: true   # we will manually fetch
 
 steps:
-  update_site:
-    image: alpine/git
+  debug_ssh:
+    image: alpine
+    environment:
+      HOME: /root
     volumes:
-      - /home/ngurley/nicholasegurley.github.io:/home/ngurley/nicholasegurley.github.io
+      - /home/ngurley/.ssh:/root/.ssh
     commands:
-      - git config --global http.sslVerify false
-      - git config --global --add safe.directory /home/ngurley/nicholasegurley.github.io
-      - cd /home/ngurley/nicholasegurley.github.io
-      - git fetch origin
-      - git reset --hard origin/main
-      - chown -R ngurley:ngurley /home/ngurley/nicholasegurley.github.io
+      - ls -la /root
+      - ls -la /root/.ssh
+      - cat /root/.ssh/id_rsa.pub || true
+      - echo "home:"; echo $HOME
     when:
       event: push
       branch: main
+
+  update_site:
+    image: alpine/git
+    volumes:
+      - /home/ngurley/nicholasegurley.github.io:/site
+      - /home/ngurley/.ssh:/root/.ssh
+    environment:
+      HOME: /root
+      GITEA_HOST: "gitea.autostack.lan"
+      GITEA_PORT: "2222"
+    commands:
+      - git config --global http.sslVerify false
+      - git config --global safe.directory /site
+
+      # Ensure known_hosts contains the Gitea SSH fingerprint
+      - ssh-keyscan -p $GITEA_PORT $GITEA_HOST >> /root/.ssh/known_hosts
+
+      - cd /site
+
+      # Force the repo to use SSH origin inside the container
+      - git remote set-url origin ssh://git@$GITEA_HOST:$GITEA_PORT/ngurley/nicholasegurley.github.io.git
+
+      # Now fetch from Gitea via SSH
+      - git fetch origin
+      - git reset --hard origin/main
+
+      - chown -R ngurley:ngurley /site
+    when:
+      event: push
+      branch: main
+
 
   restart_jekyll:
     image: alpine
     privileged: true
     volumes:
-      - /home/ngurley/nicholasegurley.github.io:/home/ngurley/nicholasegurley.github.io
+      - /home/ngurley/nicholasegurley.github.io:/site
+      - /home/ngurley/.ssh:/root/.ssh
+    environment:
+      HOME: /root
     commands:
       - apk add --no-cache bash
       - bash -lc "systemctl restart jekyll-dev"
     when:
       event: push
       branch: main
-
