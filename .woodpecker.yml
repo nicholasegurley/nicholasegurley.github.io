@@ -38,7 +38,7 @@ steps:
 
 
   restart_jekyll:
-    image: alpine
+    image: debian:stable-slim
     privileged: true
     volumes:
       - /usr/bin/systemctl:/usr/bin/systemctl
@@ -48,8 +48,9 @@ steps:
       - /run/systemd:/run/systemd
       - /run/dbus:/run/dbus
     commands:
-      - apk add --no-cache bash docker-cli util-linux
-      - bash -lc "/usr/bin/systemctl restart jekyll-dev"
+      - apt-get update
+      - apt-get install -y systemd dbus
+      - /usr/bin/systemctl restart jekyll-dev
     when:
       event: push
       branch: main
