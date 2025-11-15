@@ -1,8 +1,7 @@
-when:
-  event:
-    include: [ push ]
-  branch:
-    include: [ main ]
+workflow:
+  when:
+    event: [ push ]
+    branch: [ main ]
 
 steps:
   update_site:
