@@ -1,0 +1,19 @@
+pipeline:
+  deploy:
+    image: alpine:latest
+    secrets: [deploy_key]
+    commands:
+      - apk add openssh-client
+      - mkdir -p ~/.ssh
+      - echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
+      - chmod 600 ~/.ssh/id_ed25519
+      - ssh -o StrictHostKeyChecking=no ngurley@autostack "
+          cd /opt/ngurley/thecuriositystack &&
+          git pull &&
+          sudo systemctl restart jekyll-dev
+        "
+    when:
+      branch:
+        - main
+      event:
+        - push
