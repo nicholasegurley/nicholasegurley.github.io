@@ -35,22 +35,3 @@ steps:
     when:
       event: push
       branch: main
-
-
-  restart_jekyll:
-    image: debian:stable-slim
-    privileged: true
-    volumes:
-      - /usr/bin/systemctl:/usr/bin/systemctl
-      - /bin/systemctl:/bin/systemctl
-      - /usr/lib/systemd:/usr/lib/systemd
-      - /lib/systemd:/lib/systemd
-      - /run/systemd:/run/systemd
-      - /run/dbus:/run/dbus
-    commands:
-      - apt-get update
-      - apt-get install -y systemd dbus
-      - /usr/bin/systemctl restart jekyll-dev
-    when:
-      event: push
-      branch: main
