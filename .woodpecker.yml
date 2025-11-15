@@ -12,6 +12,7 @@ steps:
       - /home/ngurley/nicholasegurley.github.io:/home/ngurley/nicholasegurley.github.io
     commands:
       - git config --global http.sslVerify false
+      - git config --global --add safe.directory /home/ngurley/nicholasegurley.github.io
       - cd /home/ngurley/nicholasegurley.github.io
       - git fetch origin
       - git reset --hard origin/main
