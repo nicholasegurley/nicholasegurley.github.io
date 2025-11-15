@@ -1,3 +1,10 @@
+clone:
+  git:
+    image: woodpeckerci/plugin-git
+    settings:
+      depth: 1
+      skip_verify: true  # Disable SSL verification for internal CA
+
 steps:
   update_site:
     image: alpine/git
