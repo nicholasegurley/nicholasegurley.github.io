@@ -1,4 +1,4 @@
-pipeline:
+steps:
   update_site:
     image: alpine/git
     commands:
@@ -9,10 +9,11 @@ pipeline:
 
   restart_jekyll:
     image: alpine
+    privileged: true
     commands:
-      - echo "Restarting Jekyll service..."
       - apk add --no-cache bash
       - bash -lc "systemctl restart jekyll-dev"
-    privileged: true
     when:
-      branch: main
+      branch:
+        include: [ main ]
+
