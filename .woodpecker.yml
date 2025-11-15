@@ -1,19 +1,18 @@
 pipeline:
-  deploy:
-    image: alpine:latest
-    secrets: [deploy_key]
+  update_site:
+    image: alpine/git
     commands:
-      - apk add openssh-client
-      - mkdir -p ~/.ssh
-      - echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
-      - chmod 600 ~/.ssh/id_ed25519
-      - ssh -o StrictHostKeyChecking=no ngurley@autostack "
-          cd /home/ngurley/thecuriositystack &&
-          git pull &&
-          sudo systemctl restart jekyll-dev
-        "
+      - cd /home/ngurley/nicholasegurley.github.io
+      - git fetch origin
+      - git reset --hard origin/main
+      - chown -R ngurley:ngurley /home/ngurley/nicholasegurley.github.io
+
+  restart_jekyll:
+    image: alpine
+    commands:
+      - echo "Restarting Jekyll service..."
+      - apk add --no-cache bash
+      - bash -lc "systemctl restart jekyll-dev"
+    privileged: true
     when:
-      branch:
-        - main
-      event:
-        - push
+      branch: main
