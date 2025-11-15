@@ -1,3 +1,9 @@
+when:
+  event:
+    include: [ push ]
+  branch:
+    include: [ main ]
+
 steps:
   update_site:
     image: alpine/git
@@ -13,7 +19,4 @@ steps:
     commands:
       - apk add --no-cache bash
       - bash -lc "systemctl restart jekyll-dev"
-    when:
-      branch:
-        include: [ main ]
 
