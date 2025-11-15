@@ -29,7 +29,8 @@ steps:
 
       # Now fetch from Gitea via SSH
       - git fetch origin
-      - git reset --hard origin/main
+      # - git reset --hard origin/main
+      - git pull
 
       - chown -R 1001:1001 /site
     when:
