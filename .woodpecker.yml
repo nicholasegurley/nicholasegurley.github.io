@@ -3,11 +3,13 @@ clone:
     image: woodpeckerci/plugin-git
     settings:
       depth: 1
-      skip_verify: true  # Disable SSL verification for internal CA
+      skip_verify: true
 
 steps:
   update_site:
     image: alpine/git
+    volumes:
+      - /home/ngurley/nicholasegurley.github.io:/home/ngurley/nicholasegurley.github.io
     commands:
       - git config --global http.sslVerify false
       - cd /home/ngurley/nicholasegurley.github.io
@@ -21,6 +23,8 @@ steps:
   restart_jekyll:
     image: alpine
     privileged: true
+    volumes:
+      - /home/ngurley/nicholasegurley.github.io:/home/ngurley/nicholasegurley.github.io
     commands:
       - apk add --no-cache bash
       - bash -lc "systemctl restart jekyll-dev"
