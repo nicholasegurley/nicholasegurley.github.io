@@ -28,8 +28,8 @@ url: "https://nicholasegurley.github.io"
 github:
   username: nicholasegurley # change to your GitHub username
 
-twitter:
-  username: nicholasgurley # change to your Twitter username
+# twitter:
+  # username: nicholasgurley # change to your Twitter username
 
 social:
   # Change to your full name.
@@ -38,11 +38,11 @@ social:
   email: nicholas.e.gurley@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/nicholasgurley # change to your Twitter homepage
+    # - https://twitter.com/nicholasgurley # change to your Twitter homepage
     - https://github.com/nicholasegurley # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+     - https://www.linkedin.com/in/nicholasgurley
 
 # Site Verification Settings
 webmaster_verifications:
