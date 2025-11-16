@@ -42,7 +42,7 @@ social:
     - https://github.com/nicholasegurley # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-     - https://www.linkedin.com/in/nicholasgurley
+    # - https://www.linkedin.com/in/nicholasgurley
 
 # Site Verification Settings
 webmaster_verifications:
@@ -98,7 +98,7 @@ theme_mode: dark # [light | dark]
 cdn: https://nicholasegurley.github.io
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /assets/img/ngurley.jpg
+avatar: /assets/img/gray_logo.jpg
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
