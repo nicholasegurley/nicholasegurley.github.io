@@ -32,7 +32,7 @@ steps:
       # - git reset --hard origin/main
       - git pull
 
-      - chown -R 1001:1001 /site
+      #- chown -R 1001:1001 /site
     when:
       event: push
-      branch: main
+      branch: demo
