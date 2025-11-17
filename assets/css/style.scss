@@ -19,6 +19,15 @@
 
 #sidebar .site-title {
   width: 100%;
+  display: block;
+  text-align: center !important;
+  margin: 0 auto;
+}
+
+#sidebar .site-title a {
+  display: block;
+  text-align: center !important;
+  margin: 0 auto;
 }
 
 /* Force nav items to center */
