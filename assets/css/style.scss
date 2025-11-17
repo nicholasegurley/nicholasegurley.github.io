@@ -1,0 +1,34 @@
+---
+---
+
+/* Center sidebar content for Chirpy theme */
+
+#sidebar {
+  text-align: center;
+}
+
+#sidebar .site-title,
+#sidebar .site-subtitle,
+#sidebar .site-author-name,
+#sidebar .site-author-bio,
+#sidebar .sidebar-bottom,
+#sidebar ul,
+#sidebar li {
+  text-align: center !important;
+}
+
+#sidebar .site-title {
+  width: 100%;
+}
+
+/* Force nav items to center */
+#sidebar .nav-item {
+  justify-content: center !important;
+}
+
+/* Optional: center social icons */
+#sidebar .sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
