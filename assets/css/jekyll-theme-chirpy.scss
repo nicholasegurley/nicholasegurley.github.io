@@ -1,7 +1,12 @@
 ---
 ---
 
-/* Center the "The Curiosity Stack" site title in Chirpy's sidebar */
+/* Load Chirpy built-in styles */
+@import "jekyll-theme-chirpy";
+
+/* Your custom overrides go AFTER the import */
+
+/* Center the site title */
 #sidebar .site-title.d-block {
   display: block !important;
   width: 100% !important;
@@ -9,7 +14,7 @@
   margin: 0 auto !important;
 }
 
-/* Ensure the wrapper doesn't force left alignment */
+/* Ensure wrapper is centered */
 #sidebar .profile,
 #sidebar .profile-wrapper,
 #sidebar .site-title-wrapper {
