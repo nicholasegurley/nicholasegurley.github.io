@@ -45,6 +45,8 @@
 
 /* Center the site title - multiple selectors for Chirpy theme */
 #sidebar .site-title,
+#sidebar a.site-title,
+#sidebar a.site-title.d-block,
 #sidebar h1.site-title,
 #sidebar .profile-wrapper .site-title,
 #sidebar .site-title-wrapper .site-title,
