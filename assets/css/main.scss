@@ -4,18 +4,20 @@
 /* Load Chirpy built-in styles */
 @import "jekyll-theme-chirpy";
 
-/* Your custom overrides go AFTER the import */
+/* Custom overrides BELOW */
 
+/* Debug test */
 * {
   outline: 1px solid red !important;
 }
 
 /* Center the site title */
-#sidebar .site-title.d-block {
+#sidebar > .profile-wrapper > .profile > .site-title-wrapper > a.site-title.d-block {
   display: block !important;
   width: 100% !important;
   text-align: center !important;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* Ensure wrapper is centered */
