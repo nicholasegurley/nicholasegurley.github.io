@@ -6,6 +6,10 @@
 
 /* Your custom overrides go AFTER the import */
 
+* {
+  outline: 1px solid red !important;
+}
+
 /* Center the site title */
 #sidebar .site-title.d-block {
   display: block !important;
