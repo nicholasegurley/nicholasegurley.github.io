@@ -1,17 +1,8 @@
 ---
 ---
 
-/* Load Chirpy built-in styles */
-@import "jekyll-theme-chirpy";
+/* Your overrides */
 
-/* Custom overrides BELOW */
-
-/* Debug test */
-* {
-  outline: 1px solid red !important;
-}
-
-/* Center the site title */
 #sidebar > .profile-wrapper > .profile > .site-title-wrapper > a.site-title.d-block {
   display: block !important;
   width: 100% !important;
@@ -20,7 +11,6 @@
   margin-right: auto !important;
 }
 
-/* Ensure wrapper is centered */
 #sidebar .profile,
 #sidebar .profile-wrapper,
 #sidebar .site-title-wrapper {
@@ -28,4 +18,9 @@
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
+}
+
+/* Debug test */
+* {
+  outline: 1px solid red !important;
 }
