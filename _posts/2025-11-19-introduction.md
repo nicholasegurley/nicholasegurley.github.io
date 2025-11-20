@@ -18,7 +18,7 @@ A homelab is more than a server rack in a basement (and heck, it doesn't even ne
 - What can I build that can solve those problems?
 - And probably most importantly, how do I design something that fits within a normal home budget?
 
-This article introduces *The Curiosity Stack*, describing the homelab that now powers my development, my AI experimentation, and my family’s everyday digital life.  I'm hoping these articles can help someone else who is also thinking about making the plunge into building their own homelab.  
+This article introduces *The Curiosity Stack*, describing the homelab that now powers my development, my AI experimentation, and my family’s everyday digital life.  I'm hoping these articles can help others who are also thinking about making the plunge into building their own homelabs.  
 
 ### How I Began Designing a Homelab
 
@@ -26,7 +26,7 @@ At the start, I realized that I need to answer one question before I started spe
 
 *What problem am I trying to solve?*
 
-A lot of people get stuck because they begin with equipment instead of needs.  (Ask me how I know.)  Don't try recreating a datacenter at home, or copying someone else's setup.  Instead, identify practical use cases and let those drive the architecture.  In my case, my goal was to design something useful, maintainable, and financially reasonable.
+A lot of people get stuck because they begin with equipment instead of needs.  (Ask me how I know.)  Don't try recreating a datacenter at home or start by copying someone else's setup.  Instead, identify practical use cases and let those drive the architecture.  In my case, my goal was to design something useful, maintainable, and financially reasonable.
 
 If you're exploring a homelab, you're probably asking yourself the same questions.  You may be trying to justify the cost or understand the purpose.  List your needs first.
 
@@ -37,35 +37,35 @@ I categorized the problems and solutions into use cases, which were the core res
 | Use Case | Purpose |
 | -------- | ------- |
 | File Sharing and Serving | NFS and SMB shares for documents, media, and backups |
-| Photo Storage and Serving | Centralized family photo management using Synology Photos |
+| Photo Storage and Serving | Centralized family photo management and backup |
 | VPN Access | Secure external connection to the home network |
-| AI Development | AI app prototyping, Docker automation, LM Studio endpoints |
+| AI & Development | AI app prototyping, Docker automation, LM Studio endpoints |
 | Media Streaming | Jellyfin as a child-safe media center |
 | Video Games | Local Minecraft as a child-safe server |
 
-This list isn't in order of priority.  It happened to be in order of what I was considering my homelab design.  This list is the blueprint.
+This list isn't in order of priority.  It happens to be in order of the timeline over which I considered my homelab design.  Regradless, this list is my homelab's blueprint.
 
 ### From Use Cases to Architecture: The Broad-Brush Design
 
-This introduction is not a deep dive into VLAN diagrams or Ansible automation. (Those will come in later articles!)  This is how I went from use cases to architecture.
+This article is not a deep dive into VLAN diagrams or Ansible automation. (Those will come later!)  Instead, I want to show the straight-line from use cases to architecture.
 
 #### Storage, Photos, and Media: Synology NAS
 
-The three main needs that started me on the journey were storage, photo management, and secure media streaming.  Synology's Network Attached Servers (NAS) products provided all three.  After picking up my first Synology NAS, it quickly became the center of my digital life.  And, once I saw how much data flowed through it, the next decision was simple.  I added a *second* Synology unit as a dedicated backup.
+The main needs that started me on the journey were storage and photo management, and later secure media streaming.  Synology's Network Attached Servers (NAS) products provided stable, easy-to-use solutions for all three.  After picking up my first Synology NAS, it quickly became the center of my digital life.  And, once I saw how much data flowed through it, the next decision was simple:  I added a *second* Synology unit as a dedicated backup.
 
-#### Family Safety and Network Segmentation: Firewalla and VLANs
+#### Family Safety and Network Segmentation: Firewalla, VPNs, and VLANs
 
-I wanted a safe, reliable, and segmented home network that protected my family and isolated smart devices. A Firewalla Gold SE, paired with a managed switch, gave me that control. Clear VLAN design meant I could separate homelab devices, IoT, guests, and private systems while still giving my son access to media and games in a controlled way.
+I wanted a safe, reliable, and segmented home network that protected my family and isolated smart devices. A Firewalla Gold SE, paired with a managed switch, gave me that control.  Clear VLAN design meant I could separate homelab devices, IoT, guests, and private systems while still giving my son access to media and games in a controlled way.  My Firewalla also includes VPNs through OpenVPN and WireGuard protocols, so we can connect back to the home network when we're away.
 
-Just so you know, I didn't start this way.  That Synology NAS was my first firewall.  I grew into my current network configuration over time.
+Just so you know, I didn't start with this network solution.  Instead, my first Synology NAS was my firewall (and VPN!).  I grew into my current (preferred) network configuration over time.
 
 #### Child-Safe Gaming: Local Minecraft
 
-My child loves Minecraft.  Public servers come with risks I was not interested in managing (yet), and a local Minecraft server solved most issues instantly: No strangers, no ads, no surprises.  Just a space for them to explore and play with friends.
+My child loves Minecraft.  Public servers come with risks I was not interested in managing (yet), and a local Minecraft server solved most issues instantly: No strangers, no ads, no surprises.  Just a space to explore and play with friends.  I connected our Nintendo Switch using a bit of networking magic (future article for sure) and now we enjoy playing together on our preferred devices!
 
 #### AI Development and Automation: Local LLMs and ProxMox
 
-As I grew into a better developer, and started working with AI and automation, the homelab became a full development experimentation platform. That led to:
+As I grew into a better developer and started working with AI and automation, the homelab became a full development experimentation platform. That led to:
 
 - Two ProxMox hypervisors
 - A dedicated AI server (an available laptop)
@@ -87,5 +87,8 @@ Planned topics include:
 - How to set up family-safe media options
 - How to design a personal CI/CD and automation pipeline
 - How to start simple and scale your homelab over time
+- How to document your homelab journey
+- Future design and experimentation
+- And more!
 
 If you are curious about building something similar or just want to follow along with future deep dives, welcome to *The Curiosity Stack*!
