@@ -1,12 +1,12 @@
 ---
-title: Introduction
+title: My Homelab Architecture Explained (2025 Edition)
 date: 2025-11-19 10:00:00 -0500
 categories: [HOMELAB FUNDAMENTALS]
 tags: [homelab, self hosting, networking, synology, proxmox, cybersecurity, ai development, devops]
 ---
-#### My Homelab Architecture Explained (2025 Edition)
+# My Homelab Architecture Explained (2025 Edition)
 
-A practical introduction to why I built The Curiosity Stack and how you can begin your own homelab journey
+*A practical introduction to why I built The Curiosity Stack and how you can begin your own homelab journey*
 
 ## Introduction: Who I Am and How I Got Here
 
