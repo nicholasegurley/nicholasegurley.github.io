@@ -77,7 +77,7 @@ As these services came online, the homelab became the foundation of my creative 
 
 ### Conclusion: What Comes Next
 
-This article is the first step in a larger series here on *The Curiosity Stack*.  In upcoming posts, I will break down the specific components of this architecture and walk through the practical lessons I learned as I built it.
+This article is the first step in a larger series here on *The Curiosity Stack*.  In upcoming posts, I will break down the [specific components of this architecture]{% post_url 2025-12-15-physical %} and walk through the practical lessons I learned as I built it.
 
 Planned topics include:
 
